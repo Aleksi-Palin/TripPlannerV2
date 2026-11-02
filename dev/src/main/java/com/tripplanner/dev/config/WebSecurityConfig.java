@@ -19,7 +19,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests( authorize -> authorize 
-                .requestMatchers("/auth/signup", "/css/**").permitAll() // Public signup and static styles.
+                .requestMatchers("/auth/signup", "/css/**", "/js/**").permitAll() // Public signup and static assets.
 				.anyRequest().authenticated()                 // All other paths must be authenticated.
 			)                                             // If you don't give loginPage
 		.formLogin( formlogin -> formlogin                    // your application will use the

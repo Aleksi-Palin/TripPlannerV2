@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Planner</title>
     <link rel="stylesheet" th:href="@{/css/app.css}">
+    <script th:src="@{/js/autocomplete.js}" defer></script>
 </head>
 <body>
     <header class="app-bar">
@@ -15,16 +16,34 @@
     <main class="page page--centered">
         <section class="card card--wide" aria-labelledby="flight-search-title">
             <h2 id="flight-search-title">Find a flight</h2>
-            <form class="form" action="#" method="get">
+            <form class="form" th:action="@{/home}" method="get">
                 <div class="field">
                     <label for="departure">From country or airport</label>
-                    <input id="departure" name="departure" type="text"
-                           placeholder="e.g. Helsinki or Finland" required>
+                    <div class="autocomplete">
+                        <input id="departure" name="departure" type="text"
+                               placeholder="e.g. Helsinki or Finland" autocomplete="off"
+                               aria-autocomplete="list" aria-controls="departure-options"
+                               aria-expanded="false" required>
+                        <ul id="departure-options" class="autocomplete-options" role="listbox"
+                            aria-label="Departure locations">
+                            <li th:each="location : ${flightLocations}" role="option"
+                                th:text="${location}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="field">
                     <label for="destination">To country or airport</label>
-                    <input id="destination" name="destination" type="text"
-                           placeholder="e.g. London or United Kingdom" required>
+                    <div class="autocomplete">
+                        <input id="destination" name="destination" type="text"
+                               placeholder="e.g. London or United Kingdom" autocomplete="off"
+                               aria-autocomplete="list" aria-controls="destination-options"
+                               aria-expanded="false" required>
+                        <ul id="destination-options" class="autocomplete-options" role="listbox"
+                            aria-label="Destination locations">
+                            <li th:each="location : ${flightLocations}" role="option"
+                                th:text="${location}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <button class="button" type="submit">Search flights</button>
             </form>
