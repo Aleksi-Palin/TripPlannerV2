@@ -1,20 +1,21 @@
 package com.tripplanner.dev.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tripplanner.dev.config.UserService;
-import com.tripplanner.dev.domain.UserRepository;
 
-import org.springframework.ui.Model;;
+import jakarta.validation.Valid;
+
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;;
 
 @Controller 
 @RequestMapping("/auth")
 public class AuthController {
 
-    private UserRepository uRepository;
     private final UserService userService;
 
     public AuthController(UserService userService){
@@ -32,16 +33,21 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signupPage(@RequestParam String username,
-                             @RequestParam String password,
+    public String signupPage(@Valid @ModelAttribute SignupRequest request,
+                            BindingResult result,
                              Model model){
+        if (result.hasErrors()) {
+        model.addAttribute("error", "Invalid username or password");
+        return "signup";
+        }                        
+        
         try{
-            userService.register(username,password);
+            userService.register(request.username(),request.password());
         } catch (IllegalArgumentException e){
-            model.addAttribute("error: ", e.getMessage());
+            model.addAttribute("error", e.getMessage());
             return "signup";
         }
-        return "redirect:/login";
+        return "redirect:/auth/login";
     }
 
 

@@ -4,9 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Trip Planner</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.5rem 2rem;
+        }
+
+        .profile-button {
+            padding: 0.65rem 1.1rem;
+            border: 0;
+            border-radius: 0.5rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 5rem);
+            padding: 2rem;
+        }
+
+        .flight-search {
+            width: min(100%, 42rem);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 10%);
+        }
+
+        .flight-search h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .flight-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .flight-form label {
+            display: grid;
+            gap: 0.4rem;
+            font-weight: bold;
+        }
+
+        .flight-form input {
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.4rem;
+            font: inherit;
+        }
+
+        .search-button {
+            padding: 0.75rem;
+            border: 0;
+            border-radius: 0.4rem;
+            background: #16a34a;
+            color: white;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <a class="profile-button" href="/profile">Profile</a>
+    </header>
+
+    <main>
+        <section class="flight-search" aria-labelledby="flight-search-title">
+            <h1 id="flight-search-title">Find a flight</h1>
+            <form class="flight-form" action="#" method="get">
+                <label for="departure">From country or airport</label>
+                <input id="departure" name="departure" type="text"
+                       placeholder="e.g. Helsinki or Finland" required>
+
+                <label for="destination">To country or airport</label>
+                <input id="destination" name="destination" type="text"
+                       placeholder="e.g. London or United Kingdom" required>
+
+                <button class="search-button" type="submit">Search flights</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

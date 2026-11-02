@@ -24,6 +24,8 @@ public class WebSecurityConfig {
 			)                                             // If you don't give loginPage
 		.formLogin( formlogin -> formlogin                    // your application will use the
 			.loginPage("/auth/login")                          // spring boot default login page.
+			.loginProcessingUrl("/auth/login")
+			.failureUrl("/auth/login?error")
 			.defaultSuccessUrl("/home", true)      // <-- Tells where to go after
 			.permitAll()                                  // successful login.
 		)
