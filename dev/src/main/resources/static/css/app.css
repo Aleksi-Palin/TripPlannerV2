@@ -1,0 +1,161 @@
+:root {
+    font-family: Roboto, Arial, sans-serif;
+    color: #1d1b20;
+    background: #fffbfe;
+    font-synthesis: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #fffbfe;
+}
+
+a {
+    color: #6750a4;
+}
+
+.app-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    padding: 0 2rem;
+    color: #fff;
+    background: #6750a4;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 18%);
+}
+
+.app-bar h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    padding: 2rem 1rem;
+}
+
+.page--centered {
+    align-items: center;
+}
+
+.card {
+    width: min(100%, 34rem);
+    padding: 2rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 15%);
+}
+
+.card--wide {
+    width: min(100%, 42rem);
+}
+
+.card h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+}
+
+.form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.field {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.field label {
+    color: #49454f;
+    font-size: 0.875rem;
+}
+
+.field input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #79747e;
+    border-radius: 4px;
+    color: #1d1b20;
+    background: #fff;
+    font: inherit;
+}
+
+.field input:focus {
+    outline: 2px solid #6750a4;
+    outline-offset: -1px;
+    border-color: #6750a4;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.65rem 1.5rem;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    background: #6750a4;
+    font: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #57418f;
+}
+
+.button--tonal {
+    color: #4f378b;
+    background: #e8def8;
+}
+
+.button--tonal:hover {
+    background: #ded0f1;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.message {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    color: #7d1a1a;
+    background: #ffdad6;
+}
+
+.profile-content {
+    width: min(100%, 42rem);
+}
+
+.profile-content h2 {
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .app-bar {
+        padding: 0 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}

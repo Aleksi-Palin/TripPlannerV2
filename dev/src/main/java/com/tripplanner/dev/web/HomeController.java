@@ -11,4 +11,9 @@ public class HomeController {
     public String home(){
         return "home.html";
     }
+
+    @RequestMapping("/profile")
+    public String profile(){
+        return "profile.html";
+    }
 }
