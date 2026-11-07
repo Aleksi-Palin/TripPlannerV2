@@ -1,4 +1,6 @@
+// Käyttäjän tietokantamalli.
 package com.tripplanner.dev.domain;
+// Käyttäjän luontiajan käsittelyyn tarvittava aikaluokka.
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -9,10 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
+// JPA:n avulla luokka yhdistetään tietokantatauluun.
 @Entity
 @Table (name = "users")
 public class User {
 
+    // Tietokannan automaattisesti luoma käyttäjän tunniste.
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -32,16 +36,19 @@ public class User {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    // JPA tarvitsee parametrittoman konstruktorin.
     protected User() {
-        // Required by JPA
     }
 
+    // Luo uuden tavallisen käyttäjän.
     public User(String username, String passwordHash) {
         this.username = username;
         this.passwordHash = passwordHash;
-        this.role = "USER"; // Setting a safe default
+        // Uudelle käyttäjälle annetaan turvallinen oletusrooli.
+        this.role = "USER";
     }
 
+    // Asettaa luontiajan ennen ensimmäistä tallennusta.
     @PrePersist
     void onCreate() {
         if (createdAt == null) {
@@ -107,3 +114,8 @@ public class User {
     
 
 }
+    // Yksilöllinen käyttäjänimi.
+    // Salasanan salattu arvo.
+    // Käyttäjän käyttöoikeusrooli.
+    // Käyttäjän sähköpostiosoite.
+    // Käyttäjän luontiaika.

@@ -1,3 +1,4 @@
+/* Sovelluksen yleiset värit ja fontti. */
 :root {
     font-family: Roboto, Arial, sans-serif;
     color: #1d1b20;
@@ -5,10 +6,12 @@
     font-synthesis: none;
 }
 
+/* Käytetään samaa laatikkokokoa kaikissa elementeissä. */
 * {
     box-sizing: border-box;
 }
 
+/* Sivun perusasetukset. */
 body {
     margin: 0;
     min-width: 320px;
@@ -16,10 +19,12 @@ body {
     background: #fffbfe;
 }
 
+/* Linkkien väri. */
 a {
     color: #6750a4;
 }
 
+/* Yläpalkin asettelu ja ulkoasu. */
 .app-bar {
     display: flex;
     align-items: center;
@@ -31,12 +36,14 @@ a {
     box-shadow: 0 2px 6px rgb(0 0 0 / 18%);
 }
 
+/* Yläpalkin otsikon ulkoasu. */
 .app-bar h1 {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 500;
 }
 
+/* Sivun pääsisällön asettelu. */
 .page {
     display: flex;
     justify-content: center;
@@ -44,10 +51,12 @@ a {
     padding: 2rem 1rem;
 }
 
+/* Keskittää sisällön pystysuunnassa. */
 .page--centered {
     align-items: center;
 }
 
+/* Korttimaisen sisältöalueen perusulkoasu. */
 .card {
     width: min(100%, 34rem);
     padding: 2rem;
@@ -56,31 +65,37 @@ a {
     box-shadow: 0 3px 12px rgb(0 0 0 / 15%);
 }
 
+/* Leveämpi kortti hakutuloksia varten. */
 .card--wide {
     width: min(100%, 90rem);
 }
 
+/* Otsikon marginaalit ja koko. */
 .card h2 {
     margin: 0 0 1.5rem;
     font-size: 1.75rem;
     font-weight: 400;
 }
 
+/* Lomakekenttien pystysuuntainen asettelu. */
 .form {
     display: grid;
     gap: 1.25rem;
 }
 
+/* Yksittäisen lomakekentän asettelu. */
 .field {
     display: grid;
     gap: 0.4rem;
 }
 
+/* Lomakekentän selitteen ulkoasu. */
 .field label {
     color: #49454f;
     font-size: 0.875rem;
 }
 
+/* Tekstikentän ulkoasu. */
 .field input {
     width: 100%;
     padding: 0.8rem 1rem;
@@ -91,16 +106,19 @@ a {
     font: inherit;
 }
 
+/* Korostaa aktiivista tekstikenttää. */
 .field input:focus {
     outline: 2px solid #6750a4;
     outline-offset: -1px;
     border-color: #6750a4;
 }
 
+/* Automaattisen täydennyksen sisältöalueen paikka. */
 .autocomplete {
     position: relative;
 }
 
+/* Automaattisen täydennyksen vaihtoehtolistan ulkoasu. */
 .autocomplete-options {
     position: absolute;
     z-index: 2;
@@ -117,20 +135,24 @@ a {
     list-style: none;
 }
 
+/* Näyttää vaihtoehdot, kun lista on avattu. */
 .autocomplete.is-open .autocomplete-options {
     display: block;
 }
 
+/* Yksittäisen vaihtoehdon ulkoasu. */
 .autocomplete-options li {
     padding: 0.75rem 1rem;
     cursor: pointer;
 }
 
+/* Korostaa hiirellä tai näppäimistöllä valittavaa vaihtoehtoa. */
 .autocomplete-options li:hover,
 .autocomplete-options li.is-active {
     background: #f0eafa;
 }
 
+/* Painikkeiden perusulkoasu. */
 .button {
     display: inline-flex;
     justify-content: center;
@@ -147,19 +169,23 @@ a {
     cursor: pointer;
 }
 
+/* Painikkeen hover-tila. */
 .button:hover {
     background: #57418f;
 }
 
+/* Vaaleamman painikkeen ulkoasu. */
 .button--tonal {
     color: #4f378b;
     background: #e8def8;
 }
 
+/* Vaaleamman painikkeen hover-tila. */
 .button--tonal:hover {
     background: #ded0f1;
 }
 
+/* Toimintopainikkeiden asettelu. */
 .actions {
     display: flex;
     flex-wrap: wrap;
@@ -168,6 +194,7 @@ a {
     margin-top: 1.5rem;
 }
 
+/* Virheilmoituksen ulkoasu. */
 .message {
     margin: 0 0 1rem;
     padding: 0.75rem 1rem;
@@ -176,24 +203,29 @@ a {
     background: #ffdad6;
 }
 
+/* Profiilisivun sisältöalueen leveys. */
 .profile-content {
     width: min(100%, 42rem);
 }
 
+/* Profiilisivun otsikon yläreunan marginaali. */
 .profile-content h2 {
     margin-top: 0;
 }
 
+/* Sallii taulukon vaakasuuntaisen vierityksen pienellä näytöllä. */
 .table-container {
     overflow-x: auto;
 }
 
+/* Lentotulosten taulukon perusasetukset. */
 .results-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
 
+/* Taulukon solujen välistys ja alareuna. */
 .results-table th,
 .results-table td {
     padding: 0.7rem 0.8rem;
@@ -201,26 +233,31 @@ a {
     white-space: nowrap;
 }
 
+/* Taulukon otsikoiden ulkoasu. */
 .results-table th {
     color: #49454f;
     font-size: 0.875rem;
     font-weight: 500;
 }
 
+/* Päivämäärän ja kellonajan pystysuuntainen asettelu. */
 .date-time {
     display: grid;
     gap: 0.2rem;
 }
 
+/* Näyttää päivämäärän ja ajan omilla riveillään. */
 .date-time span {
     display: block;
 }
 
+/* Hinnan korostus ja tasaus. */
 .price {
     font-weight: 500;
     text-align: right;
 }
 
+/* Piilottaa tekstin visuaalisesti, mutta säilyttää sen ruudunlukijoille. */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -233,11 +270,14 @@ a {
     border: 0;
 }
 
+/* Mobiilinäytön pienemmät reunukset. */
 @media (max-width: 600px) {
+    /* Pienentää yläpalkin sivureunuksia. */
     .app-bar {
         padding: 0 1rem;
     }
 
+    /* Pienentää kortin sisäreunuksia. */
     .card {
         padding: 1.5rem;
     }

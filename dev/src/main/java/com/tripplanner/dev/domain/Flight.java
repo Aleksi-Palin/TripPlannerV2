@@ -12,32 +12,40 @@ import jakarta.persistence.Table;
 @Table(name = "flight")
 public class Flight {
 
+    // Lennon yksilöllinen tunniste.
     @Id
     private Integer id;
 
+    // Lentoyhtiön nimi.
     @Column(nullable = false, length = 100)
     private String airline;
 
+    // Lennon tunnus, esimerkiksi AY123.
     @Column(nullable = false, length = 20)
     private String flightcode;
 
+    // Lennon lähtöpaikka.
     @Column(nullable = false)
     private String origin;
 
+    // Lennon määränpää.
     @Column(nullable = false)
     private String destination;
 
+    // Suunniteltu lähtöaika.
     @Column(name = "departure_time", nullable = false)
     private LocalDateTime departureTime;
 
+    // Suunniteltu saapumisaika.
     @Column(name = "arrival_time", nullable = false)
     private LocalDateTime arrivalTime;
 
+    // Lennon hinta euroina.
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
+    // JPA tarvitsee parametrittoman konstruktorin.
     protected Flight() {
-        // Required by JPA
     }
 
     public String getAirline() {
