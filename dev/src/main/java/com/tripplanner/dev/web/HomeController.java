@@ -4,7 +4,9 @@ import java.util.TreeSet;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tripplanner.dev.domain.FlightRepository;
 
@@ -24,6 +26,17 @@ public class HomeController {
         locations.addAll(flightRepository.findDistinctDestinations());
         model.addAttribute("flightLocations", locations);
         return "home.html";
+    }
+
+    @GetMapping("/flights")
+    public String flights(@RequestParam String departure,
+                          @RequestParam String destination,
+                          Model model) {
+        model.addAttribute("departure", departure);
+        model.addAttribute("destination", destination);
+        model.addAttribute("flights",
+                flightRepository.findByOriginIgnoreCaseAndDestinationIgnoreCase(departure, destination));
+        return "flights.html";
     }
 
     @RequestMapping("/profile")

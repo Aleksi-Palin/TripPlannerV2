@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight results</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+    <header class="app-bar">
+        <h1>Trip Planner</h1>
+        <a class="button button--tonal" th:href="@{/home}">New search</a>
+    </header>
+
+    <main class="page">
+        <section class="card card--wide" aria-labelledby="flight-results-title">
+            <h2 id="flight-results-title">Flights from <span th:text="${departure}"></span>
+                to <span th:text="${destination}"></span></h2>
+
+            <p class="message" th:if="${#lists.isEmpty(flights)}">
+                No flights found for this route.
+            </p>
+
+            <div class="table-container" th:unless="${#lists.isEmpty(flights)}">
+                <table class="results-table">
+                    <caption class="visually-hidden">Available flights</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col">Airline</th>
+                        <th scope="col">Flight code</th>
+                        <th scope="col">Origin</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Departure</th>
+                        <th scope="col">Arrival</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="flight : ${flights}">
+                        <td th:text="${flight.airline}"></td>
+                        <td th:text="${flight.flightcode}"></td>
+                        <td th:text="${flight.origin}"></td>
+                        <td th:text="${flight.destination}"></td>
+                        <td class="date-time">
+                            <span title="Date">📅 <span th:text="${#temporals.format(flight.departureTime, 'yyyy-MM-dd')}"></span></span>
+                            <span title="Time">🕒 <span th:text="${#temporals.format(flight.departureTime, 'HH:mm')}"></span></span>
+                        </td>
+                        <td class="date-time">
+                            <span title="Date">📅 <span th:text="${#temporals.format(flight.arrivalTime, 'yyyy-MM-dd')}"></span></span>
+                            <span title="Time">🕒 <span th:text="${#temporals.format(flight.arrivalTime, 'HH:mm')}"></span></span>
+                        </td>
+                        <td class="price" th:text="${'€ ' + #numbers.formatDecimal(flight.price, 1, 2)}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
